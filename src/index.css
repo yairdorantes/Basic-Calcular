@@ -1,13 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+body::-webkit-scrollbar {
+  width: 2px; /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: rgb(108, 15, 117); /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #209b97; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+}
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+  font-family: "Roboto", sans-serif;
+  color: white;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.container-calc {
+  position: fixed;
+  display: flex;
+  width: 400px;
+}
+.container-nums {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  width: 45%;
+}
+.container-nums > button {
+  border: none;
+  flex: 23.33%;
+  height: 50px;
+  margin: 5px;
+  color: white;
+  background-color: #1d1d1d;
+  border-radius: 50%;
+}
+.operators {
+  display: flex;
+  flex-direction: column;
+}
+.operators > button {
+  padding: 0px;
+  /* margin: 1px; */
+  padding: 10px;
+  font-size: 20px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  border: none;
+  background-color: #f28d00;
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  margin: 8px;
+  color: white;
+}
+.operators > button:active {
+  background-color: aliceblue;
+  color: #f28d00;
+}
+
+.container-info {
+  text-align: right;
+  width: 62%;
+  overflow-x: auto;
 }
