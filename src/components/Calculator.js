@@ -1,6 +1,5 @@
 import { useState } from "react";
 import CreateButton from "./CreateButton";
-import backspace from "../assets/backspace.png";
 var op = "";
 
 let regex = /^[/* )( +-]+$/;
@@ -54,17 +53,18 @@ const Calculator = () => {
     if (valor === "one-character") {
       setOperacion(operacion.slice(0, -1));
       op = op.slice(0, -1);
-
-      try {
-        let res = eval(op);
-        setResult(res);
-      } catch (e) {
-        return;
+      if (op.match(reg)) {
+        try {
+          let res = eval(op);
+          setResult(res);
+        } catch (e) {
+          return;
+        }
       }
     }
     if (valor === "del-all") {
       op = "";
-      setOperacion();
+      setOperacion("");
       setResult();
     }
   };
@@ -76,47 +76,60 @@ const Calculator = () => {
     setOperacion(result);
 
     // setResult();
-    setOperacion("");
-    op = "";
+
+    op = result;
+    setResult();
   };
 
   return (
     <>
-      <h1>Calculator</h1>
       {/* <h5>{lastCal}</h5> */}
       <div className="container-info">
+        <h4>{operacion}</h4>
         <h2>{result}</h2>
-        <div>{operacion}</div>
       </div>
       <div className="container-calc">
         <div className="container-nums">
-          <button
-            style={{ backgroundColor: "#989898", color: "black" }}
-            onClick={del}
-            value="del-all"
-          >
-            C
-          </button>
-          <button style={{ backgroundColor: "#989898", color: "black" }}>
-            %
-          </button>
-          <button
-            style={{ backgroundColor: "#989898" }}
-            onClick={del}
-            value="one-character"
-          >
-            <img src={backspace} alt="" style={{ width: "30px" }} />
-          </button>
+          <div>
+            <button
+              style={{ backgroundColor: "#989898", color: "black" }}
+              onClick={del}
+              value="del-all"
+            >
+              C
+            </button>
+          </div>
+          <div>
+            <button style={{ backgroundColor: "#989898", color: "black" }}>
+              %
+            </button>
+          </div>
+          <div>
+            <button
+              style={{ backgroundColor: "#989898" }}
+              onClick={del}
+              value="one-character"
+            >
+              ↰
+            </button>
+          </div>
+
           <CreateButton handleValue={handleValue} />
-          <button onClick={handleValue} value="00">
-            00
-          </button>
-          <button value="0" onClick={handleValue}>
-            0
-          </button>
-          <button onClick={handleValue} value=".">
-            .
-          </button>
+          <div>
+            <button onClick={handleValue} value="00">
+              00
+            </button>
+          </div>
+          <div>
+            <button value="0" onClick={handleValue}>
+              0
+            </button>
+          </div>
+          <div>
+            <button onClick={handleValue} value=".">
+              .
+            </button>
+          </div>
         </div>
         <div className="operators">
           <button

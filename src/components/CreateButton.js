@@ -3,9 +3,11 @@ const CreateButton = ({ handleValue }) => {
 
   for (let i = 1; i < 10; i++) {
     digits.push(
-      <button value={i} onClick={handleValue} key={i}>
-        {i}
-      </button>
+      <div key={i}>
+        <button value={i} onClick={handleValue} key={i}>
+          {i}
+        </button>
+      </div>
     );
   }
   return digits;
